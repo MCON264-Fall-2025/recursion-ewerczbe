@@ -36,6 +36,23 @@ public class BinarySearch {
     // TODO: Implement recursively. DO NOT convert to a loop.
     private static int search(int[] a, int target, int lo, int hi) {
         // Base case 1: empty range
+        if (lo > hi) return -1;
+
+        // Calculate mid index
+        int mid = lo + (hi - lo) / 2;
+
+        // Base case 2: found at mid
+        if (a[mid] == target) return mid;
+
+        // Recursive case: search left or right half
+        if (target < a[mid]) {
+            return search(a, target, lo, mid - 1);
+        } else {
+            return search(a, target, mid + 1, hi);
+        }
+    }
+
+    // Base case 1: empty range
         // Base case 2: found at mid
         // Recursive case: pick left or right half
         // Hints:
@@ -43,6 +60,5 @@ public class BinarySearch {
         //   if (target < a[mid]) return search(a, target, lo, mid - 1);
         //   else if (target > a[mid]) return search(a, target, mid + 1, hi);
         //   else return mid;
-        return -2; // TEMP: replace with your recursive solution
-    }
+         // TEMP: replace with your recursive solution
 }
